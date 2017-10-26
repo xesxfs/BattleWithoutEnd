@@ -1,0 +1,339 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Egret</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #888888;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+
+    <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
+    <!--modules_files_start-->
+	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
+	<script egret="lib" src="libs/modules/game/game.js" src-release="libs/modules/game/game.min.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
+	<script egret="lib" src="libs/modules/eui/eui.js" src-release="libs/modules/eui/eui.min.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
+	<script egret="lib" src="libs/modules/socket/socket.js" src-release="libs/modules/socket/socket.min.js"></script>
+	<!--modules_files_end-->
+
+    <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
+    <!--other_libs_files_start-->
+    <script egret="lib" src="polyfill/promise.js" src-release="polyfill/promise.min.js"></script>
+    <!--other_libs_files_end-->
+
+    <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
+    <!--game_files_start-->
+	<script egret="game" src="bin-debug/iData/iNumber/RangeNumber.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/PetSkillData.js"></script>
+	<script egret="game" src="bin-debug/iData/iNumber/DamageNumber.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/AttackPetSkillData.js"></script>
+	<script egret="game" src="bin-debug/iData/BasicStatus.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/Monster.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/PetStats.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/PetType.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/Boss.js"></script>
+	<script egret="game" src="bin-debug/iData/iMap/MapData.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/MonsterData.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/PetData.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/PetTypeList.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/PetDataList.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/MonsterList.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/Skill.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/Equipment.js"></script>
+	<script egret="game" src="bin-debug/iData/iMap/Map.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/ButtonCell.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/EquipmentData.js"></script>
+	<script egret="game" src="bin-debug/blow_sound.js"></script>
+	<script egret="game" src="bin-debug/iData/iMap/MapList.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/ActiveSkill.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/Stat.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/SkillData.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/BasicCell.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/PassivePetSkillData.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/WeaponData.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/WeaponType.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/MonsterTitle.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/StatMul.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/EquipType.js"></script>
+	<script egret="game" src="bin-debug/iData/iPlayer/Title.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/RangeStat.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/ActiveSkillData.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/iBuff/Buff.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/PassiveSkillData.js"></script>
+	<script egret="game" src="bin-debug/tool/Base64.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/SkillCategory.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/DefencePetSkillData.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/SkillType.js"></script>
+	<script egret="game" src="bin-debug/iData/Race.js"></script>
+	<script egret="game" src="bin-debug/iGlobal/Global.js"></script>
+	<script egret="game" src="bin-debug/iPanel/CoverPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/AdvancedCell.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/Weapon.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/WeaponCategory.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/InfoWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/BeginScene.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iItem/ItemInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/after_elf.js"></script>
+	<script egret="game" src="bin-debug/after_equip.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/EquipmentList.js"></script>
+	<script egret="game" src="bin-debug/after_giant.js"></script>
+	<script egret="game" src="bin-debug/after_human.js"></script>
+	<script egret="game" src="bin-debug/after_info.js"></script>
+	<script egret="game" src="bin-debug/iData/iItem/StatList.js"></script>
+	<script egret="game" src="bin-debug/after_item.js"></script>
+	<script egret="game" src="bin-debug/after_pet.js"></script>
+	<script egret="game" src="bin-debug/after_skill.js"></script>
+	<script egret="game" src="bin-debug/after_system.js"></script>
+	<script egret="game" src="bin-debug/after_title.js"></script>
+	<script egret="game" src="bin-debug/after_undeath.js"></script>
+	<script egret="game" src="bin-debug/before_arrow_left.js"></script>
+	<script egret="game" src="bin-debug/before_arrow_right.js"></script>
+	<script egret="game" src="bin-debug/before_dwarf.js"></script>
+	<script egret="game" src="bin-debug/before_elf.js"></script>
+	<script egret="game" src="bin-debug/before_equip.js"></script>
+	<script egret="game" src="bin-debug/before_giant.js"></script>
+	<script egret="game" src="bin-debug/iData/iMonster/MonsterTitleList.js"></script>
+	<script egret="game" src="bin-debug/before_human.js"></script>
+	<script egret="game" src="bin-debug/before_info.js"></script>
+	<script egret="game" src="bin-debug/before_item.js"></script>
+	<script egret="game" src="bin-debug/before_pet.js"></script>
+	<script egret="game" src="bin-debug/before_skill.js"></script>
+	<script egret="game" src="bin-debug/before_system.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/PetSkill.js"></script>
+	<script egret="game" src="bin-debug/before_title.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/iPetSkill/PetSkillList.js"></script>
+	<script egret="game" src="bin-debug/iData/iPet/Pet.js"></script>
+	<script egret="game" src="bin-debug/before_undeath.js"></script>
+	<script egret="game" src="bin-debug/after_arrow_left.js"></script>
+	<script egret="game" src="bin-debug/boss_icon.js"></script>
+	<script egret="game" src="bin-debug/brand_mc.js"></script>
+	<script egret="game" src="bin-debug/buff_burn.js"></script>
+	<script egret="game" src="bin-debug/buff_corrosion.js"></script>
+	<script egret="game" src="bin-debug/iData/iPlayer/TitleList.js"></script>
+	<script egret="game" src="bin-debug/buff_frozen.js"></script>
+	<script egret="game" src="bin-debug/buff_poison.js"></script>
+	<script egret="game" src="bin-debug/button_bagSlot.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/iBuff/BuffBurn.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/iBuff/BuffCorrosion.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/iBuff/BuffFrozen.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/iBuff/BuffPoison.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/PassiveSkill.js"></script>
+	<script egret="game" src="bin-debug/button_gamble.js"></script>
+	<script egret="game" src="bin-debug/button_help.js"></script>
+	<script egret="game" src="bin-debug/button_map.js"></script>
+	<script egret="game" src="bin-debug/button_petSlot.js"></script>
+	<script egret="game" src="bin-debug/iData/iSkill/SkillDataList.js"></script>
+	<script egret="game" src="bin-debug/button_rebirth.js"></script>
+	<script egret="game" src="bin-debug/button_save.js"></script>
+	<script egret="game" src="bin-debug/iData/RaceList.js"></script>
+	<script egret="game" src="bin-debug/button_shop.js"></script>
+	<script egret="game" src="bin-debug/iGlobal/Player.js"></script>
+	<script egret="game" src="bin-debug/caption_mc.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iBar/Bar.js"></script>
+	<script egret="game" src="bin-debug/com/spikything/utils/MouseWheelTrap.js"></script>
+	<script egret="game" src="bin-debug/doubleCircle.js"></script>
+	<script egret="game" src="bin-debug/facebook_button.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/ButtonGroup.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/EquipButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/EquipmentCell.js"></script>
+	<script egret="game" src="bin-debug/font_nesb.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/ItemInfoWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/MenuButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/StringCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/StringInfoCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iCell/StringInfoWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/InnerPanel.js"></script>
+	<script egret="game" src="bin-debug/after_dwarf.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/FlickerButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/AllInfoPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/BattleSkillPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/ComfirmScene.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/HelpPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iAllInfo/AllInfoInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iAllInfo/AllInfoOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iBattleSkill/BattleSkillInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iBattleSkill/BattleSkillOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iShop/GambleCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iShop/ShopCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/EquipWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iEquip/EquipCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iItem/ForgeButton.js"></script>
+	<script egret="game" src="bin-debug/after_arrow_right.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iItem/ItemOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iItem/StringInfoButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetIconCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetInfoWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iPet/PetSkillCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/ActiveSkillCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/CombatInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/CombatOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/MagicInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/MagicOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/PassiveInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/PassiveOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/SkillCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSkill/StringButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSystem/ClickButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSystem/iMap/MapPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iSystem/ToggleBox.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/ItemWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iTitle/TitleCell.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iTitle/TitleInnerPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/iTitle/TitleOutterPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/OtherWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/PetWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/SkillWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/SystemWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/TitleWindow.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/iWindow/Window.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/LootPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/MonsterInfoPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/OtherPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/PetInfoPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/PlayerInfoPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/ShopPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/iPanel/SpecialShopPanel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/MainScene.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/PeopleModel.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/RaceButton.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/RaceScene.js"></script>
+	<script egret="game" src="bin-debug/iPanel/iScene/SaveScene.js"></script>
+	<script egret="game" src="bin-debug/iPanel/MyScrollBar.js"></script>
+	<script egret="game" src="bin-debug/iPanel/OutterPanel.js"></script>
+	<script egret="game" src="bin-debug/Main_fla/MainTimeline.js"></script>
+	<script egret="game" src="bin-debug/Main.js"></script>
+	<script egret="game" src="bin-debug/map_icon.js"></script>
+	<script egret="game" src="bin-debug/map_mc.js"></script>
+	<script egret="game" src="bin-debug/mc_axe.js"></script>
+	<script egret="game" src="bin-debug/mc_blacksmithing.js"></script>
+	<script egret="game" src="bin-debug/mc_body_heavy.js"></script>
+	<script egret="game" src="bin-debug/mc_body_light.js"></script>
+	<script egret="game" src="bin-debug/mc_body_medium.js"></script>
+	<script egret="game" src="bin-debug/mc_bow.js"></script>
+	<script egret="game" src="bin-debug/mc_combat_mastery.js"></script>
+	<script egret="game" src="bin-debug/mc_corrosive_shot.js"></script>
+	<script egret="game" src="bin-debug/mc_counterattack.js"></script>
+	<script egret="game" src="bin-debug/mc_critical_hit.js"></script>
+	<script egret="game" src="bin-debug/mc_crossbow.js"></script>
+	<script egret="game" src="bin-debug/mc_dagger.js"></script>
+	<script egret="game" src="bin-debug/mc_defence.js"></script>
+	<script egret="game" src="bin-debug/mc_equip.js"></script>
+	<script egret="game" src="bin-debug/mc_feet_heavy.js"></script>
+	<script egret="game" src="bin-debug/mc_feet_light.js"></script>
+	<script egret="game" src="bin-debug/mc_feet_medium.js"></script>
+	<script egret="game" src="bin-debug/mc_fireball.js"></script>
+	<script egret="game" src="bin-debug/mc_firebolt.js"></script>
+	<script egret="game" src="bin-debug/mc_forge.js"></script>
+	<script egret="game" src="bin-debug/mc_head_heavy.js"></script>
+	<script egret="game" src="bin-debug/mc_head_light.js"></script>
+	<script egret="game" src="bin-debug/mc_head_medium.js"></script>
+	<script egret="game" src="bin-debug/mc_ice_spear.js"></script>
+	<script egret="game" src="bin-debug/mc_icebolt.js"></script>
+	<script egret="game" src="bin-debug/mc_life_drain.js"></script>
+	<script egret="game" src="bin-debug/mc_lightningbolt.js"></script>
+	<script egret="game" src="bin-debug/mc_lvup.js"></script>
+	<script egret="game" src="bin-debug/mc_magic_mastery.js"></script>
+	<script egret="game" src="bin-debug/mc_mana_shield.js"></script>
+	<script egret="game" src="bin-debug/mc_mirage_missile.js"></script>
+	<script egret="game" src="bin-debug/mc_mode.js"></script>
+	<script egret="game" src="bin-debug/mc_money.js"></script>
+	<script egret="game" src="bin-debug/mc_necklace_accesory.js"></script>
+	<script egret="game" src="bin-debug/mc_range_mastery.js"></script>
+	<script egret="game" src="bin-debug/mc_ring_accesory.js"></script>
+	<script egret="game" src="bin-debug/mc_sceptre.js"></script>
+	<script egret="game" src="bin-debug/mc_shield.js"></script>
+	<script egret="game" src="bin-debug/mc_smash.js"></script>
+	<script egret="game" src="bin-debug/mc_staff.js"></script>
+	<script egret="game" src="bin-debug/mc_sword.js"></script>
+	<script egret="game" src="bin-debug/mc_thunder.js"></script>
+	<script egret="game" src="bin-debug/mc_tome.js"></script>
+	<script egret="game" src="bin-debug/people_use1.js"></script>
+	<script egret="game" src="bin-debug/people_use2.js"></script>
+	<script egret="game" src="bin-debug/pet_attack.js"></script>
+	<script egret="game" src="bin-debug/pet_balance.js"></script>
+	<script egret="game" src="bin-debug/pet_bear.js"></script>
+	<script egret="game" src="bin-debug/pet_defence.js"></script>
+	<script egret="game" src="bin-debug/pet_dragon.js"></script>
+	<script egret="game" src="bin-debug/pet_fox.js"></script>
+	<script egret="game" src="bin-debug/pet_ghost.js"></script>
+	<script egret="game" src="bin-debug/pet_goblin.js"></script>
+	<script egret="game" src="bin-debug/pet_magic.js"></script>
+	<script egret="game" src="bin-debug/pet_rat.js"></script>
+	<script egret="game" src="bin-debug/pet_skeleton.js"></script>
+	<script egret="game" src="bin-debug/pet_spider.js"></script>
+	<script egret="game" src="bin-debug/pet_unicorn.js"></script>
+	<script egret="game" src="bin-debug/pet_wolf.js"></script>
+	<script egret="game" src="bin-debug/pet_zombie.js"></script>
+	<script egret="game" src="bin-debug/pSkill_aggressive.js"></script>
+	<script egret="game" src="bin-debug/pSkill_counterattack.js"></script>
+	<script egret="game" src="bin-debug/pSkill_defensive.js"></script>
+	<script egret="game" src="bin-debug/pSkill_dodge.js"></script>
+	<script egret="game" src="bin-debug/pSkill_double_hit.js"></script>
+	<script egret="game" src="bin-debug/pSkill_fireball.js"></script>
+	<script egret="game" src="bin-debug/pSkill_good_or_evil.js"></script>
+	<script egret="game" src="bin-debug/pSkill_heal.js"></script>
+	<script egret="game" src="bin-debug/pSkill_ice_spear.js"></script>
+	<script egret="game" src="bin-debug/pSkill_injury_resile.js"></script>
+	<script egret="game" src="bin-debug/pSkill_life_drain.js"></script>
+	<script egret="game" src="bin-debug/pSkill_meditation.js"></script>
+	<script egret="game" src="bin-debug/pSkill_protective.js"></script>
+	<script egret="game" src="bin-debug/pSkill_slayer.js"></script>
+	<script egret="game" src="bin-debug/pSkill_strong.js"></script>
+	<script egret="game" src="bin-debug/pSkill_taunt.js"></script>
+	<script egret="game" src="bin-debug/pSkill_thunder.js"></script>
+	<script egret="game" src="bin-debug/pSkill_wisdom.js"></script>
+	<script egret="game" src="bin-debug/pSkill_wise.js"></script>
+	<script egret="game" src="bin-debug/iData/Battle.js"></script>
+	<script egret="game" src="bin-debug/tool/Effect.js"></script>
+	<script egret="game" src="bin-debug/tool/FPSShow.js"></script>
+	<script egret="game" src="bin-debug/tool/HideMessageParticle.js"></script>
+	<script egret="game" src="bin-debug/tool/HideMessageThread.js"></script>
+	<script egret="game" src="bin-debug/tool/MyEvent.js"></script>
+	<script egret="game" src="bin-debug/tool/MyMath.js"></script>
+	<script egret="game" src="bin-debug/yell_sound.js"></script>
+	<!--game_files_end-->
+</head>
+<body>
+
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
+         data-entry-class="Main"
+         data-orientation="auto"
+         data-scale-mode="showAll"
+         data-frame-rate="30"
+         data-content-width="640"
+         data-content-height="1136"
+         data-show-paint-rect="false"
+         data-multi-fingered="2"
+         data-show-fps="false" data-show-log="false"
+         data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+    </div>
+    <script>
+        /**
+         * {
+         * "renderMode":, //引擎渲染模式，"canvas" 或者 "webgl"
+         * "audioType": "" //使用的音频类型，0:默认，1:qq audio，2:web audio，3:audio
+         * "antialias": //WebGL模式下是否开启抗锯齿，true:开启，false:关闭，默认为false
+         * }
+         **/
+        egret.runEgret({renderMode:"webgl", audioType:0});
+    </script>
+</body>
+</html>
